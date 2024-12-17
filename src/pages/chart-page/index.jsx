@@ -4,18 +4,20 @@ import { userStore } from '../../store/store';
 
 export const ChartPage = () => {
   const users = userStore((state) => state.users);
-  const reactNum = users.filter((user) => user.skillsSet === 'react')
-  const jsNum = users.filter((user) => user.skillsSet === 'js')
-  const nextNum = users.filter((user) => user.skillsSet === 'next')
-  const htmlNum = users.filter((user) => user.skillsSet === 'html')
-  const cssNum = users.filter((user) => user.skillsSet === 'css')
+  
+  // Count users per skill
+  const reactNum = users.filter((user) => user.skillsSet === 'react').length;
+  const jsNum = users.filter((user) => user.skillsSet === 'js').length;
+  const nextNum = users.filter((user) => user.skillsSet === 'next').length;
+  const htmlNum = users.filter((user) => user.skillsSet === 'html').length;
+  const cssNum = users.filter((user) => user.skillsSet === 'css').length;
 
   const [chartData, setChartData] = useState({
-    labels: ["react", "js", "next", "html", "css"], 
+    labels: ["React", "JavaScript", "Next.js", "HTML", "CSS"], 
     datasets: [
       {
-        label: "Users Gained ",
-        data: [reactNum, jsNum, nextNum, htmlNum, cssNum],
+        label: "Users Gained",
+        data: [reactNum, jsNum, nextNum, htmlNum, cssNum], // Use counts instead of arrays
         backgroundColor: [
           "rgba(75,192,192,1)",
           "#ecf0f1",
@@ -27,10 +29,11 @@ export const ChartPage = () => {
         borderWidth: 2
       }
     ]
-  })
+  });
+
   return (
     <div>
-      <PieChart chartData={chartData}  />
+      <PieChart chartData={chartData} />
     </div>
   );
 }
