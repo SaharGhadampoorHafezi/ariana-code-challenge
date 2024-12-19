@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HeaderComponent from "../../components/header-component";
 import { DropDown } from "../../modules/form";
 import { userStore } from "../../store/store";
+import { calculateAge } from "../../utiles/age-calculator";
 
 export const FormPage = () => {
   const [enteredValue, setEnteredValue] = useState({
@@ -77,16 +78,25 @@ export const FormPage = () => {
           >
             Birth Date
           </label>
-          <input
-            type="date"
-            id="birth"
-            className="w-[512px] h-[44px] rounded-lg  gap-[190px] border border-[third-gray] text-[#868686] "
-            value={enteredValue.birthDate}
-            onChange={(e) =>
-              setEnteredValue({ ...enteredValue, birthDate: e.target.value })
-            }
-            placeholder=""
-          />
+          <div>
+            <input
+              type="date"
+              id="birth"
+              className="w-[512px] h-[44px] rounded-lg  gap-[190px] border border-[third-gray] text-[#868686] "
+              value={enteredValue.birthDate}
+              onChange={(e) =>
+                setEnteredValue({ ...enteredValue, birthDate: e.target.value })
+              }
+              placeholder=""
+            />
+            <p className="text-[#5C5C5C] text-base font-medium">
+              {enteredValue.birthDate
+                ? `calculated: ${calculateAge(
+                    enteredValue.birthDate
+                  )} years old`
+                : null}
+            </p>
+          </div>
         </div>
         <div className="flex align-center items-center gap-2 flex align-center items-center gap-[170px] border-b[silver] red-600 border  border-t-0 border-r-0 border-l-0 py-6">
           <label className="font-semibold text-sm text-[first-gray]" htmlFor="">
