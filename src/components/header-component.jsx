@@ -8,7 +8,7 @@ const HeaderComponent = () => {
     { title: "chart page", route: "chart" },
   ];
   return (
-    <div className="w-[1440px] h-[72px] bg-red-500 flex align-center items-center pl-6">
+    <div className="w-[1440px] h-[72px] text-[#8A001B] flex align-center items-center border border-t-0 border-l-0 border-r-0">
       <div>
         <h2 className="text-base font-black text-[dark-red]">Arianalabs</h2>
       </div>
