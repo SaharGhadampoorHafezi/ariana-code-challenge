@@ -12,6 +12,10 @@ export const userStore = create(
       set((state) => ({
         users: state.users.filter((user) => user.name !== name),
       })),
+      replaceUser: (newUser) =>
+        set((state) => ({
+          users: [...state.users, state.user === newUser],
+        })),
   })),
   { name: "users" }
 );
